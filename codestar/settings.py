@@ -32,10 +32,8 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'moustache-blog-7d2b0802fa1b.herokuapp.com',
-    '.herokuapp.com',  # wildcard for any Heroku subdomain
+    '*.herokuapp.com',  # wildcard for any Heroku subdomain
 ]
-
-
 
 # Application definition
 
