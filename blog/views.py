@@ -11,18 +11,16 @@ class PostList(generic.ListView):
 
 
 def post_detail(request, slug):
-    """
-    Display an individual :model:`blog.Post`.
 
-    **Context**
+    queryset = Post.objects.filter(status=1)
+    post = get_object_or_404(queryset, slug=slug)
 
-    ``post``
-        An instance of :model:`blog.Post`.
-
-    **Template:**
-
-    :template:`blog/post_detail.html`
-    """
+    return render(
+        request,
+        "blog/post_detail.html",
+        {"post": post,
+         "coder": "Rik Duerden"},
+    )
 
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -31,4 +29,15 @@ def post_detail(request, slug):
         request,
         "blog/post_detail.html",
         {"post": post},
+    )
+
+def event_detail(request, event_id):
+    
+    queryset = Event.objects.all()
+    event = get_object_or_404(queryset, event_id=event_id)
+
+    return render(
+        request,
+        "events/event_detail.html",
+        {"event": event}
     )
